@@ -4,7 +4,7 @@ using static ParseNet.Functions;
 
 namespace ParseNet.Combinators
 {
-    public static class Combinators
+    public static partial class Combinators
     {
         public static Parser<ImmutableList<T>> Seq<T>(this Parser<T> first, Parser<T> second)
         {
