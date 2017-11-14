@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 using ParseNet.Extensions;
 using static ParseNet.Functions;
@@ -30,5 +31,41 @@ namespace ParseNet
 
             return parser;
         }
+
+        public static Parser<string> Regex(string regexString, bool? skipWhiteSpace = null)
+        {
+            ParseResult<string> parser(string source, int position)
+            {
+                Regex regex = RegexCache.GetOrAdd(regexString, (key) =>
+                {
+                    if (!regexString.StartsWith(@"\G"))
+                    {
+                        if (regexString.StartsWith(@"\g")) regexString = regexString.Substring(2);
+                        regexString = $@"\G{regexString}";
+                    }
+                    return new Regex(regexString);
+                });
+
+                if (skipWhiteSpace == null) skipWhiteSpace = SkipWhiteSpace;
+                if (skipWhiteSpace.Value)
+                {
+                    while (source[position].IsWhiteSpace()) position += 1;
+                }
+
+                Match match = regex.Match(source, position);
+
+                if (match.Success)
+                {
+                    int nextPosition = position + match.Length;
+                    return Success(source, nextPosition, match.Value);
+                }
+                return Failed<string>(source, position, $"not matched to {regex}");
+            }
+
+            return parser;
+        }
+
+        private static readonly ConcurrentDictionary<string, Regex> RegexCache 
+            = new ConcurrentDictionary<string, Regex>();
     }
 }
