@@ -14,7 +14,7 @@ namespace ParseNet.Combinators
                 {
                     var rightResult = right(source, leftResult.NextPosition);
                     return rightResult.IsSuccess
-                        ? leftResult
+                        ? Success(source, rightResult.NextPosition, leftResult.Result)
                         : rightResult;
                 }
                 return leftResult;
