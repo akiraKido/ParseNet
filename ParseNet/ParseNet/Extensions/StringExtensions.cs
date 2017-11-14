@@ -10,9 +10,9 @@
             if (position >= s.Length) return false;
             if (position + target.Length > s.Length) return false;
             
-            for (int i = position; i < target.Length; i++)
+            for (int i = 0; i < target.Length; i++)
             {
-                if (s[i] != target[i]) return false;
+                if (s[i + position] != target[i]) return false;
             }
             return true;
         }
