@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Text.RegularExpressions;
-using static ParseNet.Functions;
+﻿using static ParseNet.Functions;
 
 namespace ParseNet
 {
