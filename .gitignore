@@ -1,4 +1,6 @@
 .idea/
 bin/
 obj/
-
+.vs/
+*.DotSettings.user
+_ReSharper.Caches/
