@@ -7,10 +7,18 @@ namespace ParseNet
 {
     public static class StringParsers
     {
-        public static Parser<string> Literal(string literal)
+        public static bool SkipWhiteSpace = false;
+        
+        public static Parser<string> Literal(string literal, bool? skipWhiteSpace = null)
         {
             ParseResult<string> parser(string source, int position)
             {
+                if (skipWhiteSpace == null) skipWhiteSpace = SkipWhiteSpace;
+                if (skipWhiteSpace.Value)
+                {
+                    while (source[position].IsWhiteSpace()) position += 1;
+                }
+                
                 int nextPosition = position + literal.Length;
 
                 if (source.Length < nextPosition) return Failed<string>(source, position, "source is too short");
