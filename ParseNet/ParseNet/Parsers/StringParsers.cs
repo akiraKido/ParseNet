@@ -15,7 +15,7 @@ namespace ParseNet.Parsers
                     return Failed<string>(source, position, "source is too short");
                 }
 
-                if (source.Substring(position, literal.Length) == literal)
+                if (string.Compare(source, position, literal, 0, literal.Length) == 0)
                 {
                     return Success(source, nextPosition, literal);
                 }
