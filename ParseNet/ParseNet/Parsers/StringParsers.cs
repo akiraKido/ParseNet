@@ -12,7 +12,7 @@ namespace ParseNet.Parsers
 
                 if (source.Length < nextPosition)
                 {
-                    return Failed<string>(source, position, "source is too short");
+                    return EndOfSource<string>(source, position);
                 }
 
                 if (string.Compare(source, position, literal, 0, literal.Length) == 0)

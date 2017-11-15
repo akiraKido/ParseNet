@@ -10,5 +10,8 @@
 
         public static ParseResult<T> Parse<T>(this Parser<T> parser, string source)
             => parser(source, 0);
+
+        public static ParseResult<T> EndOfSource<T>(string source, int nextPosition)
+            => Failed<T>(source, nextPosition, "end of source");
     }
 }
