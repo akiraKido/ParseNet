@@ -2,7 +2,7 @@
 using ParseNet.Combinators;
 using Xunit;
 using static ParseNet.Functions;
-using static ParseNet.StringParsers;
+using static ParseNet.Parsers.StringParsers;
 
 namespace ParseNet.Test
 {

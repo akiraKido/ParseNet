@@ -1,6 +1,6 @@
 ﻿using static ParseNet.Functions;
 
-namespace ParseNet
+namespace ParseNet.Parsers
 {
     public static class StringParsers
     {
