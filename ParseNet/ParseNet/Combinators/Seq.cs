@@ -6,7 +6,7 @@ namespace ParseNet.Combinators
 {
     public static partial class Combinators
     {
-        public static Parser<ImmutableList<T>> Then<T>(this Parser<T> first, Parser<T> second)
+        public static Parser<ImmutableList<T>> Seq<T>(this Parser<T> first, Parser<T> second)
         {
             ParseResult<ImmutableList<T>> parse(string s, int index)
             {
@@ -28,7 +28,7 @@ namespace ParseNet.Combinators
             return parse;
         }
         
-        public static Parser<ImmutableList<T>> Then<T>(this Parser<ImmutableList<T>> first, Parser<T> second)
+        public static Parser<ImmutableList<T>> Seq<T>(this Parser<ImmutableList<T>> first, Parser<T> second)
         {
             ParseResult<ImmutableList<T>> parse(string s, int index)
             {
@@ -50,7 +50,7 @@ namespace ParseNet.Combinators
             return parse;
         }
 
-        public static Parser<TResult> Then<TFirst, TSecond, TResult>(this Parser<TFirst> first, Parser<TSecond> second, Func<TFirst, TSecond, TResult> resultSelector)
+        public static Parser<TResult> Seq<TFirst, TSecond, TResult>(this Parser<TFirst> first, Parser<TSecond> second, Func<TFirst, TSecond, TResult> resultSelector)
         {
             ParseResult<TResult> parse(string s, int index)
             {
@@ -72,7 +72,7 @@ namespace ParseNet.Combinators
             return parse;
         }
 
-        public static Parser<string> Then(this Parser<string> first, Parser<string> second)
+        public static Parser<string> Seq(this Parser<string> first, Parser<string> second)
         {
             ParseResult<string> parse(string s, int index)
             {

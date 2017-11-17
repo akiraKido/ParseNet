@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParseNet", "ParseNet\ParseN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParseNet.Test", "ParseNet.Test\ParseNet.Test.csproj", "{1E5B3878-46CE-4149-B397-505BE42ECCAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleLuaParser", "SampleLuaParser\SampleLuaParser.csproj", "{99C2AF47-166A-42B8-9878-1456C3B6D19D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1E5B3878-46CE-4149-B397-505BE42ECCAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E5B3878-46CE-4149-B397-505BE42ECCAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E5B3878-46CE-4149-B397-505BE42ECCAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99C2AF47-166A-42B8-9878-1456C3B6D19D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99C2AF47-166A-42B8-9878-1456C3B6D19D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99C2AF47-166A-42B8-9878-1456C3B6D19D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99C2AF47-166A-42B8-9878-1456C3B6D19D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
