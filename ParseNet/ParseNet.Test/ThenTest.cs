@@ -2,16 +2,16 @@ using System.Collections.Immutable;
 using ParseNet.Combinators;
 using Xunit;
 using static ParseNet.Functions;
-using static ParseNet.StringParsers;
+using static ParseNet.Parsers.StringParsers;
 
 namespace ParseNet.Test
 {
     public class SeqTest
     {
         [Fact]
-        public void StringThenTest()
+        public void StringSeqTest()
         {
-            Parser<string> hogeFugaParser = Literal("hoge").Then(Literal("fuga"));
+            Parser<string> hogeFugaParser = Literal("hoge").Seq(Literal("fuga"));
             
             hogeFugaParser("hogefuga", 0).IsSuccess.IsTrue();
             hogeFugaParser("hogefuga", 0).Result.Is("hogefuga");
@@ -21,7 +21,7 @@ namespace ParseNet.Test
         }
 
         [Fact]
-        public void ObjectThenTest()
+        public void ObjectSeqTest()
         {
             Parser<Hoge> hogeParser = (source, position) =>
             {
@@ -40,12 +40,12 @@ namespace ParseNet.Test
             };
 
             Parser<string[]> hogeFugaParser =
-                hogeParser.Then(fugaParser, (hoge, fuga) => new string[] {hoge.Name, fuga.Name});
+                hogeParser.Seq(fugaParser, (hoge, fuga) => new string[] {hoge.Name, fuga.Name});
 
             hogeFugaParser("hogefuga", 0).IsSuccess.IsTrue();
             hogeFugaParser("hogefuga", 0).Result.Is("hoge", "fuga");
 
-            Parser<ImmutableList<Hoge>> hogehogeParser = hogeParser.Then(hogeParser);
+            Parser<ImmutableList<Hoge>> hogehogeParser = hogeParser.Seq(hogeParser);
             hogehogeParser("hogehoge", 0).IsSuccess.IsTrue();
             hogehogeParser("hogehoge", 0).Result.Is(new Hoge(), new Hoge());
         }
